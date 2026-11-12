@@ -1,0 +1,44 @@
+meta:
+  image_directory: "~/.cache/kagglehub/competitions/umud-challenge-muscle-architecture-in-ultrasound-data/apo_imgs_v1/apo_images_new_model_v1"
+  image_extensions:
+    - .tif
+    - .tiff
+    - .png
+  image_count: 10
+  output_directory: output
+  result_filename: results.csv
+  save_processing_charts: false
+  save_histograms: false
+  checkpoint_interval: 25
+
+algorithms:
+  calibration:
+    strip_with_px: 55
+    cutout_width_px: 10
+    tick_intensity_threshold: 50
+    tick_spacing_mm: 5
+    minimum_tick_count: 3
+  cropping:
+    horizontal_fraction: 0.8
+    vertical_fraction: 0.9
+    top_threshold_fraction: 0.33
+    bottom_threshold_fraction: 0.1
+    horizontal_threshold_fraction: 0.15
+    normalization_percentiles: [2, 98]
+  band_detection:
+    count: 2
+    seed: 5
+    min_separation: 18
+    max_iterations: 110
+    population_size: 12
+    tolerance: 0.002
+  fascicle_angle:
+    margin: 8
+    wavelengths: [6, 10, 16]
+    angle_step: 2
+    minimum_roi_pixels: 500
+    sigma_along_factor: 0.9
+    sigma_across_factor: 0.55
+  geometric_postprocessing:
+    band_distance_scan_count: 10
+    fascicle_scan_count: 1
